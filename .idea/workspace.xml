@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a2eb759-63ee-4ea9-bbb4-8b4d068ebc93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jobeet.iml" afterPath="$PROJECT_DIR$/.idea/jobeet.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
     </list>
     <ignored path="jobeet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -489,12 +485,12 @@
       <workItem from="1523434194807" duration="23695000" />
       <workItem from="1523516529059" duration="599000" />
       <workItem from="1523526377865" duration="1565000" />
-      <workItem from="1523528682936" duration="1237000" />
+      <workItem from="1523528682936" duration="1833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77691000" />
+    <option name="totallyTimeSpent" value="78287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
