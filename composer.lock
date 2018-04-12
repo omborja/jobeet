@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d2b3cec7c4eb9cadf1930fb7b1797db5",
-    "content-hash": "5db943026955088358411f5af2ac97bd",
+    "hash": "51e2ecf8f9dcd544c7c8e84e9d2bed9d",
+    "content-hash": "0f8dc23420529a83f814ae6ad089959b",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2196,6 +2196,58 @@
                 "xls"
             ],
             "time": "2017-11-30 13:30:20"
+        },
+        {
+            "name": "sonata-project/jquery-bundle",
+            "version": "1.10.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonatajQueryBundle.git",
+                "reference": "a53282159f54bc44379d63727a042254841302d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonatajQueryBundle/zipball/a53282159f54bc44379d63727a042254841302d7",
+                "reference": "a53282159f54bc44379d63727a042254841302d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\jQueryBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org",
+                    "homepage": "http://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonatajQueryBundle/contributors"
+                }
+            ],
+            "description": "Symfony SonatajQueryBundle",
+            "homepage": "http://sonata-project.org/bundles/jquery",
+            "keywords": [
+                "jquery",
+                "sonata"
+            ],
+            "abandoned": true,
+            "time": "2014-04-01 12:48:59"
         },
         {
             "name": "swiftmailer/swiftmailer",
