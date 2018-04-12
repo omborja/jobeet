@@ -1,4 +1,4 @@
-jobs_ens:
+jobs:
     resource: "@EnsJobeetBundle/Controller"
     type:     annotation
 
