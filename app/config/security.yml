@@ -1,11 +1,18 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
-
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        Ens\JobeetBundle\Entity\User: sha512
+
     providers:
+        main:
+            entity: { class: Ens\JobeetBundle\Entity\User, property: username}
+
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin: { password: adminpass, roles: 'ROLE_ADMIN' }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +20,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        secured_area:
+            pattern: ^/
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            logout:
+                path:   /logout
+                target: /
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
