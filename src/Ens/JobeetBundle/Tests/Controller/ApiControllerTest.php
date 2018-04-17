@@ -83,7 +83,7 @@ class ApiControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/api/sensio-labs/jobs.xml');
 
         $this->assertEquals('Ens\JobeetBundle\Controller\ApiController::listAction', $client->getRequest()->attributes->get('_controller'));
-        $this->assertTrue($crawler->filter('description')->count() == 32);
+        $this->assertTrue($crawler->filter('description')->count() == 11);
 
         $crawler = $client->request('GET', '/api/sensio-labs87/jobs.xml');
 

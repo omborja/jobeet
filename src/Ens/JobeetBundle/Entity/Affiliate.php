@@ -94,6 +94,24 @@ class Affiliate
      */
     private $isActive;
 
+    public function activate()
+    {
+        if(!$this->isIsActive()) {
+            $this->setIsActive(true);
+        }
+
+        return $this->isActive;
+    }
+
+    public function deactivate()
+    {
+        if($this->isIsActive()) {
+            $this->setIsActive(false);
+        }
+
+        return $this->isActive;
+    }
+
 
     /**
      * @return boolean

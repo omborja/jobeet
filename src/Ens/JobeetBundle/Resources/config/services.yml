@@ -2,12 +2,11 @@ services:
 #    ens_jobeet.example:
 #        class: Ens\JobeetBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
-
-ens.jobeet.admin.affiliate:
+    ens_jobeet.admin.affiliate:
         class: Ens\JobeetBundle\Admin\AffiliateAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: jobeet, label: Affiliates }
         arguments:
             - ~
             - Ens\JobeetBundle\Entity\Affiliate
-            - 'Ens\JobeetBundle:AffiliateAdmin'
+            - 'EnsJobeetBundle:AffiliateAdmin'
