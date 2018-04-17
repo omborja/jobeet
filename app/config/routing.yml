@@ -1,7 +1,6 @@
 jobs_ens:
     resource: "@EnsJobeetBundle/Controller"
     type:     annotation
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

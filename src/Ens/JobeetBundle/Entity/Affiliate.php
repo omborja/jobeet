@@ -3,6 +3,8 @@
 namespace Ens\JobeetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Affiliate
@@ -26,14 +28,17 @@ class Affiliate
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255,nullable=true)
+     * @Assert\Url
      */
     private $url;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email()
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -52,10 +57,59 @@ class Affiliate
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="CategoryAffiliate", mappedBy="affiliate")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="affiliates")
+     * @ORM\JoinTable(name="category_affiliate",
+     * joinColumns={@ORM\JoinColumn(name="affiliate_id", referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")} )
      */
-    private $categoryAffiliates;
+    private $categories;
 
+    /** * Constructor */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=true)
+     *
+     */
+    private $isActive;
+
+
+    /**
+     * @return boolean
+     */
+    public function isIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
     /**
      * Get id
@@ -163,29 +217,6 @@ class Affiliate
         return $this->createdAt;
     }
 
-    /**
-     * Set categoryAffiliates
-     *
-     * @param string $categoryAffiliates
-     *
-     * @return Affiliate
-     */
-    public function setCategoryAffiliates($categoryAffiliates)
-    {
-        $this->categoryAffiliates = $categoryAffiliates;
-
-        return $this;
-    }
-
-    /**
-     * Get categoryAffiliates
-     *
-     * @return string
-     */
-    public function getCategoryAffiliates()
-    {
-        return $this->categoryAffiliates;
-    }
 
     /**
      * @ORM\PrePersist
@@ -194,5 +225,38 @@ class Affiliate
     {
         $this->createdAt = new \DateTime();
     }
+
+
+    /**
+     * Add category
+     *
+     * @param \Ens\JobeetBundle\Entity\Category $category
+     * @return Affiliate
+     */
+    public function addCategory(\Ens\JobeetBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category; return $this;
+    }
+    /**
+     * Remove category
+     *
+     *  @param \Ens\JobeetBundle\Entity\Category $category
+     */
+    public function removeCategory($category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setTokenValue()
+    {
+        if(!$this->getToken())
+        {
+            $this->token = sha1($this->getEmail().rand(11111, 99999));
+        }
+    }
+
 }
 

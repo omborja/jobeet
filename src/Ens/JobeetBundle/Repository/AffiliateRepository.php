@@ -10,4 +10,22 @@ namespace Ens\JobeetBundle\Repository;
  */
 class AffiliateRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getForToken($token)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.isActive = :active')
+            ->setParameter('active', 1)
+            ->andWhere('a.token = :token')
+            ->setParameter('token', $token)
+            ->setMaxResults(1)
+        ;
+
+        try{
+            $affiliate = $qb->getQuery()->getSingleResult();
+        } catch(\Doctrine\Orm\NoResultException $e){
+            $affiliate = null;
+        }
+
+        return $affiliate;
+    }
 }

@@ -45,13 +45,28 @@ class Category
      */
     private $jobs;
 
+    /**
+     * @return mixed
+     */
+    public function getAffiliates()
+    {
+        return $this->affiliates;
+    }
 
     /**
-     * @ORM\OneToMany(targetEntity="CategoryAffiliate", mappedBy="category")
+     * @param mixed $affiliates
      */
-    private $categoryAffiliates;
+    public function setAffiliates($affiliates)
+    {
+        $this->affiliates = $affiliates;
+    }
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Affiliate", mappedBy="categories")
+     */
+    private $affiliates;
+    
     /**
      * @var
      */
@@ -168,22 +183,6 @@ class Category
     public function setJobs($jobs)
     {
         $this->jobs = $jobs;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategoryAffiliates()
-    {
-        return $this->categoryAffiliates;
-    }
-
-    /**
-     * @param mixed $categoryAffiliates
-     */
-    public function setCategoryAffiliates($categoryAffiliates)
-    {
-        $this->categoryAffiliates = $categoryAffiliates;
     }
 
     /**

@@ -31,7 +31,8 @@ class JobType extends AbstractType
             ->add('category')
             ->add('file', 'file', array('label' => 'Company logo', 'required' => false,'data_class' => null));
 
-    }/**
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
