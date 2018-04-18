@@ -28,8 +28,7 @@ class JobControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/job/new');
         $this->assertEquals('Ens\JobeetBundle\Controller\JobController::newAction', $client->getRequest()->attributes->get('_controller'));
     }
-
-
+    
     /*
     public function testCompleteScenario()
     {

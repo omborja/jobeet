@@ -306,4 +306,37 @@ class JobController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
+
+    /**
+     * Search job entity.
+     *
+     * @Route("/search", name="job_search")
+     * @Method({"GET", "POST"})
+     */
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $request->get('query');
+
+        if(!$query) {
+            if(!$request->isXmlHttpRequest()) {
+                return $this->redirect($this->generateUrl('job_index'));
+            } else {
+                return new Response('No results.');
+            }
+        }
+
+        $jobs = $em->getRepository('EnsJobeetBundle:Job')->getForLuceneQuery($query);
+
+        if($request->isXmlHttpRequest()) {
+            if('*' == $query || !$jobs || $query == '') {
+                return new Response('No results.');
+            }
+
+            return $this->render('EnsJobeetBundle:Job:list.html.twig', array('jobs' => $jobs));
+        }
+
+        return $this->render('EnsJobeetBundle:Job:search.html.twig', array('jobs' => $jobs));  }
+
+
 }
